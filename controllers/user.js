@@ -41,8 +41,8 @@ export const Login = async(req,res,next)=>{
     success:false,
     message: "invalid password or email"})
   };
+  sendCookie(res,user,`Welcome Back, ${user.name}`)
   
-sendCookie(res,user,`Welcome Back, ${user.name}`)
  } catch (error) {
   next(error)
  }
@@ -61,7 +61,7 @@ export const logout = (req,res) => {
  })
     .json({
       success:true,
-      message: "Logout success ",
+      user:req.user,
     })
 }
  
