@@ -1,5 +1,6 @@
 import express from 'express';
 import userRouter from'./routes/user.js'
+import taskRouter from './routes/task.js'
 import {config} from 'dotenv'
 import cookieParser from 'cookie-parser';
 import { errorMiddleWare } from './middleWares/error.js';
@@ -20,6 +21,7 @@ app.use(cors({
 }))
 
 app.use("/users",userRouter);
+app.use("/task", taskRouter);
 
 app.get("/",(req,res)=>{
     res.send("Nice Working"); 
