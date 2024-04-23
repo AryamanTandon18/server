@@ -2,7 +2,6 @@ import express from 'express';
 import userRouter from'./routes/user.js'
 import {config} from 'dotenv'
 import cookieParser from 'cookie-parser';
-import {router} from './routes/task.js'
 import { errorMiddleWare } from './middleWares/error.js';
 export const app = express();
 import cors from 'cors'
@@ -21,7 +20,6 @@ app.use(cors({
 }))
 
 app.use("/users",userRouter);
-app.use("/task",router);
 
 app.get("/",(req,res)=>{
     res.send("Nice Working"); 
