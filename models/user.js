@@ -12,7 +12,7 @@ const schema = new mongoose.Schema({
      },
      password: {
          type: String,
-         select: false,
+         select: false,         //it means  const data = findById(req.params.id) ,data will not contain password  
          required: true,    
      },
      createdAt:{
