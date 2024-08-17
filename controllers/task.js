@@ -68,3 +68,24 @@ export const deleteTask = async (req, res, next) => {
     next(error);
   }
 };
+
+export const editTask = async(req,res)=>{
+  try {
+    const {id} = req.params;
+    const {editDescription,editTitle} = req.body;
+    const task = await Task.findById(id);
+    if (!task) return next(new ErrorHandler("Task not found", 404));
+    task.description = editDescription;
+    task.title = editTitle;
+    await task.save();
+
+    return res.status(200).json({
+      success:true
+    })
+  } catch (error) {
+    console.log("Error in editTask");
+    return res.status(500).json({
+      message:"Error in editTask"
+    })
+  }
+}

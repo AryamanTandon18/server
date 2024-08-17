@@ -7,7 +7,7 @@ export const register = async(req,res,next)=>{
    try {
     const {name,email,password} = req.body;
     let user = await Users.findOne({email})
-  
+    console.log("Line 10");
     if(user){
       return res.status(404).json({
         message:"User already exist",
@@ -16,8 +16,9 @@ export const register = async(req,res,next)=>{
     }
     const hashedPassword = await bcrypt.hash(password,10);
     user = await Users.create({name,email,password:hashedPassword});
- 
+    console.log("Line 19");
    sendCookie(res,user,"Registered Successfully")
+   console.log("Line 21");
    } catch (error) {
     next(error)
    }

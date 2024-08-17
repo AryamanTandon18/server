@@ -13,6 +13,6 @@ export const isAuthenticated = async(req,res,next)=>{
 
     const decoded = jwt.verify(Token,process.env.JWT_SECRET);
 
-    req.user = await Users.findById(decoded._id);
+    req.user = await Users.findById(decoded._id);     // saving user detials in req.user object so that we can access the authenticated user
     next();
 }
